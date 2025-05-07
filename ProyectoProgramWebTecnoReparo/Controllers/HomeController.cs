@@ -15,7 +15,17 @@ namespace ProyectoProgramWebTecnoReparo.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            Product product = new Product()
+            {
+                Id = 001,
+                Name = "Ryzen 5 3600",
+                Description = "Procesador AMD de 6 nucleos y 12 hilos a 3.6 ghz",
+                Price = 99,
+                Stock = 20,
+                Available = true
+            };
+            
+            return View(product);
         }
 
         public IActionResult Privacy()

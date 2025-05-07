@@ -1,8 +1,32 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Product
+
+@{
+    ViewData["Title"] = "TecnoReparo";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class=text-center>
+    <h1 class=“display-4”>TecnoReparo</h1>
+    <h2>Presupuestos y armados de PCs gamers</h2>
 </div>
+<br />
+<div style="margin-top: -10px">
+    <div class="row justify-content-center text-center">
+        <div class="col col-3 bg-white" style="border-radius: 15px 0 0 15px; box-shadow: 0 5px 5px 0 gray">
+            <i class="bi bi-amd"></i>
+            <h3>@Model.Name</h3>
+            
+            <p class="text-primary cabecera">
+                Descripcion:
+            </p>
+            <p>@Model.Description</p>
+            <ul>
+                <li>Precio = $ @Model.Price</li>
+                <li>Stock = @Model.Stock</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
