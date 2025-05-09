@@ -1,0 +1,58 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    <script>
+        function SendToast() {
+            var context = document.getElementById('OkToast');
+            var toast = new bootstrap.Toast(context);
+            toast.show();
+        }
+       
+    </script>
+}
+
+
+<form asp-controller="Contact" asp-action="Contact" method="post">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input id="name" name="Name" type="text" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Telefono</label>
+        <input id="phnm" name="Phone" type="text" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Mail</label>
+        <input id="mail" name="Mail" type="email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Detalle</label>
+        <textarea id="desc" name="Message" class="form-control" rows="4"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success" onclick="SendToast()">Enviar</button>
+        <a class="btn btn-danger" href="@Url.Action("Index", "Home")">Cancelar</a>
+    </div>
+</form>
+
+    <div class="position-fixed bottom-0 end-0 p-3">
+        <div id="OkToast" class="toast">
+            <div class="toast-header">
+                <strong class="me-auto">Solicitud de contacto enviada!</strong>
+                <small>Reciente</small>
+                <button class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                Nos pondremos en contacto con usted en los proximos dias
+
+            </div>
+        </div>
+    </div>
+
+
+
+

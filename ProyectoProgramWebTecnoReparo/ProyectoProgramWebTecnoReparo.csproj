@@ -7,7 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Home\NewFolder\**" />
+    <Content Remove="Views\Home\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Home\NewFolder\**" />
+    <None Remove="Views\Home\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\HomeController1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Controllers\Contact.cshtml" />
+    <Content Remove="Views\Home\Index1.cshtml" />
   </ItemGroup>
 
 </Project>
