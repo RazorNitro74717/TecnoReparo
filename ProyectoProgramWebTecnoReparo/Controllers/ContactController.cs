@@ -1,11 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoProgramWebTecnoReparo.Models;
+using System.Diagnostics;
 
 namespace ProyectoProgramWebTecnoReparo.Controllers
 {
     public class ContactController : Controller
     {
-        // [HttpPost] <- Si lo pongo tira error 405 
+        private readonly ILogger<ContactController> _logger;
+
+        public ContactController(ILogger<ContactController> logger)
+        {
+            _logger = logger;
+        }
+        [HttpGet]
+
+        [HttpPost]  
         public IActionResult Contact(Contact contact)
         {
             if (ModelState.IsValid)
@@ -14,6 +23,12 @@ namespace ProyectoProgramWebTecnoReparo.Controllers
             }
 
             return View(contact);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

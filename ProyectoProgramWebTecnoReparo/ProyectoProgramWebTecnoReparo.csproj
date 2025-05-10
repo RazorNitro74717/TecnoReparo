@@ -22,4 +22,8 @@
     <Content Remove="Views\Home\Index1.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Img\" />
+  </ItemGroup>
+
 </Project>

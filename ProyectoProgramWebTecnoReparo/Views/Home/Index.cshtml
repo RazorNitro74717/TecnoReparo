@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model List<Product>
 
 @{
     ViewData["Title"] = "TecnoReparo";
@@ -7,25 +7,67 @@
 <div class=text-center>
     <h1 class=“display-4”>TecnoReparo</h1>
     <h2>Presupuestos y armados de PCs gamers</h2>
-</div>
-<br />
-<div style="margin-top: -10px">
-    <div class="row justify-content-center text-center">
-        <div class="col col-3 bg-white" style="border-radius: 15px 15px 15px 15px; box-shadow: 0 5px 5px 0 gray">
-            <i class="bi bi-amd"></i>
-            <h3>@Model.Name</h3>
-            
-            <p class="text-primary cabecera">
-                Descripcion:
-            </p>
-            <p>@Model.Description</p>
-            <ul>
-                <li>Precio = $ @Model.Price</li>
-                <li>Stock = @Model.Stock</li>
-            </ul>
+    <br />
+    <h2>Componentes destacados</h2>
+
+    <br />
+    <div class= container-text-center>
+        <div id="carouselIndex" class="carousel carousel-dark slide">
+                <div class="carousel-indicators">
+                    @for(int i = 0; i < Model.Count(); i++){
+                    <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="@i" class="@(i == 0? "active" : " ")" aria-current="@(i == 0? "true" : "false")" aria-label="@(i+1)"></button>
+                    }
+                </div>
+
+                <div class="carousel-inner">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    var product = Model.ElementAt(i);
+                    <div class="carousel-item @(i == 0 ? "active" : " ")">
+                        <img src="@product.Image" class="d-block mx-auto w-75" alt="/img/not_available.png">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>@product.Name</h5>
+                            <p>@product.Description</p>
+                        </div>
+                    </div>                
+                 }
+                </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+        
         </div>
     </div>
+    <br />
+    <div style="margin-top: -10px">
+        @foreach (var product in Model)
+        {
+            <div class="row justify-content-center text-center">
+                <div class="col col-3 bg-white" style="border-radius: 15px 15px 15px 15px; box-shadow: 0 5px 5px 0 gray">
+                    <i class="bi bi-amd"></i>
+                    <h3>@product.Name</h3>
+
+                    <p class="text-primary cabecera">
+                        Descripcion:
+                    </p>
+                    <p>@product.Description</p>
+                    <ul>
+                        <li>Precio = $ @product.Price</li>
+                        <li>Stock = @product.Stock</li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
 </div>
+
 
 
 
