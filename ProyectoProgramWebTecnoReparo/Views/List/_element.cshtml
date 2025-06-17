@@ -1,0 +1,19 @@
+﻿@model List<Product>
+
+@if (Model is not null)
+{
+    <div class="row g-4 justify-content-center">
+        @foreach (var pic in Model)
+        {
+            <div class="col-12 col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="/img/@pic.Image" class="card-img-top" alt="@pic.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@pic.Name</h5>
+                        <p class="card-text">@pic.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

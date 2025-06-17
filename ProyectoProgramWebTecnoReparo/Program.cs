@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+using ProyectoProgramWebTecnoReparo.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<PwaContext>(options=> options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionSQL")));
 
 var app = builder.Build();
 

@@ -4,16 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section Scripts {
-    <script>
-        function SendToast() {
-            var context = document.getElementById('OkToast');
-            var toast = new bootstrap.Toast(context);
-            toast.show();
-        }
-       
-    </script>
-}
+
 
 
 <form asp-controller="Contact" asp-action="Contact" method="post">
@@ -54,5 +45,14 @@
     </div>
 
 
+@section Scripts {
+    <script>
+        function SendToast() {
+            var context = document.getElementById('OkToast');
+            var toast = new bootstrap.Toast(context);
+            toast.show();
+        }
 
+    </script>
+}
 
