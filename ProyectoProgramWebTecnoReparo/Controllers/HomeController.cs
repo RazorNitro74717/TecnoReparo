@@ -1,60 +1,50 @@
 using Microsoft.AspNetCore.Mvc;
 using ProyectoProgramWebTecnoReparo.Models;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace ProyectoProgramWebTecnoReparo.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        public readonly PwaContext _DbContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, PwaContext context)
         {
             _logger = logger;
+            _DbContext = context;
         }
 
-        public List<Product> GetProducts() 
-        {
-            return new List<Product>
-        {
-            new Product()
-                {
-                    Id = 101,
-                    Name = "Ryzen 5 3600",
-                    Description = "Procesador AMD de 6 nucleos y 12 hilos a 3.6 ghz",
-                    Price = 99,
-                    Stock = 20,
-                    Available = true,
-                    Image = "/img/Ryzen_5_3600.png"
-                },
-            new Product()
-                {
-                    Id = 201,
-                    Name = "Asus B550 PRIME M-A",
-                    Description = "Motherboard Asus para procesadores AM4 de AMD",
-                    Price = 59,
-                    Stock = 50,
-                    Available = true,
-                    Image = "/img/asus_prime_b550_m-a.png"
-                },
-            new Product()
-                {
-                    Id = 301,
-                    Name = "Kingston Fury 16GB DDR4 ",
-                    Description = "Memoria RAM de 16GB DDR4 a 3200mhz",
-                    Price = 19,
-                    Stock = 90,
-                    Available = true,
-                    Image = "/img/kingston_fury.png"
-                }
+        
 
-        };
-    }
 
+        //Funciones secundarias
+        private string GetSplashList()
+        {
+            string[] frases = new[] 
+            {
+                "¡Bienvenido!",
+                "Ahora con más VRAM",
+                "No alimentes a los bugs",
+                "Funcionara... probablemente",
+                "Cargado al azar con cariño"
+            };
+
+            Random rnd = new Random();
+            return frases[rnd.Next(frases.Length)];
+        }
+
+
+        //Controller
         public IActionResult Index()
         {
-            var a = GetProducts().ToList();
-            return View(a);
+            List<Product> pList = _DbContext.Products.ToList();
+            Random RNG = new Random();
+            var selec = pList.OrderBy(x => RNG.Next()).Take(3).ToList();
+            string splash = GetSplashList();
+            ViewBag.SplashText = splash;
+            return View(selec);
         }
 
         public IActionResult Privacy()

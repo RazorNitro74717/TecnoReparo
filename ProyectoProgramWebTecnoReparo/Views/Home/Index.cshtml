@@ -7,6 +7,7 @@
 <div class=text-center>
     <h1 class=“display-4”>TecnoReparo</h1>
     <h2>Presupuestos y armados de PCs gamers</h2>
+    <div class="splash-text" style="font-size: 1.5rem; color: darkorange; text-align: center; margin-top: 20px;">@ViewBag.SplashText</div>
     <br />
     <h2>Componentes destacados</h2>
 
@@ -24,7 +25,7 @@
                 {
                     var product = Model.ElementAt(i);
                     <div class="carousel-item @(i == 0 ? "active" : " ")">
-                        <img src="@product.Image" class="d-block mx-auto w-75" alt="/img/not_available.png">
+                        <img src="/img/@product.Image" class="d-block mx-auto w-75" alt="/img/not_available.png">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>@product.Name</h5>
                             <p>@product.Description</p>

@@ -4,5 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container d-flex justify-content-center">
+    <div class="dropdown md-2">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorias
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Procesadores</a></li>
+            <li><a class="dropdown-item" href="#">Placas Madre</a></li>
+            <li><a class="dropdown-item" href="#">Memorias RAM</a></li>
+        </ul>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+</div>
 <partial name="_element" />
 
