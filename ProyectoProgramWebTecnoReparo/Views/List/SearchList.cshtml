@@ -6,16 +6,16 @@
 
 <div class="container d-flex justify-content-center">
     <div class="row">
-        <div class="col-md-3">    
+        <div class="col-md-3">
             <h3>Categorias</h3>
             <form asp-controller="List" asp-action="SearchList" method="get">
                 <div class="form-check">
-                        @foreach (var x in Model.Categories)
-                        {
-                        <input class="form-check-input" type="radio" value="@x.Name" id="@x.CategoryId" name ="cat">
+                    @foreach (var x in Model.Categories)
+                    {
+                        <input class="form-check-input" type="radio" value="@x.Name" id="@x.CategoryId" name="cat">
                         <label class="form-check-label" for="@x.CategoryId">@x.Name</label>
-                        <br/>
-                        }
+                        <br />
+                    }
                     <input type="submit" value="Buscar" class="btn btn-info" />
                 </div>
             </form>
@@ -24,6 +24,7 @@
     <div class="col-md-9 d-flex flex-wrap">
         <partial name="_element" />
     </div>
+    
 </div>
 
 
