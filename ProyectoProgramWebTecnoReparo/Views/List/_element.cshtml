@@ -7,13 +7,15 @@
         {
             <div class="col-12 col-md-4">
                 <div class="card" style="width: 15rem;">
-                    <img src="/img/@pic.Image" class="card-img-top" alt="@pic.Name">
+                    <img src="/img/@pic.Image" class="card-img-top" alt="/img/not_available.jpg">
                     <div class="card-body">
                         <h5 class="card-title">@pic.Name</h5>
                         <p class="card-text">@pic.Description</p>
+                        <p class="card-text">$ @pic.Price</p>
                         <p class="card-text">@(pic._Category?.Name != null ?  pic._Category.Name : " ")</p>
                     </div>
-                    <a href="#" class="btn btn-primary">Button</a>
+                    <a class="btn btn-info" asp-action="Cart" asp-controller="List" asp-route-id=@pic.Id>Agregar a carrito</a>
+
                 </div>
             </div>
         }

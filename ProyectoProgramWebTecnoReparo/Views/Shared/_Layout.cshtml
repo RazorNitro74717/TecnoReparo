@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProyectoProgramWebTecnoReparo</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProyectoProgramWebTecnoReparo.styles.css" asp-append-version="true" />
 </head>
@@ -24,10 +25,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Productos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Budget" asp-action="Budget">Presupuesto</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Common">Preguntas Frecuentes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="List" asp-action="List">Lista de componentes</a>
@@ -40,6 +38,13 @@
                         </li>
                     </ul>
                 </div>
+                <ul>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="List" asp-action="Cart">
+                        <i style="color:gray;font-size:20px" class="bi bi-cart-fill"></i>
+                        @TempData["Count"]
+                    </a>
+                </ul>
+
             </div>
         </nav>
     </header>

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ProyectoProgramWebTecnoReparo.Helpers;
 using ProyectoProgramWebTecnoReparo.Models;
 using System.Diagnostics;
 using System.Security.Cryptography;
@@ -35,10 +36,27 @@ namespace ProyectoProgramWebTecnoReparo.Controllers
             return frases[rnd.Next(frases.Length)];
         }
 
+        private void GetCartCount()
+        {
+            int q;
+
+            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "Cart");
+            if (cart == null)
+            {
+                q = 0;
+            }
+            else
+            {
+                q = cart.Count;
+            }
+            TempData["Count"] = q;
+        }
+
 
         //Controller
         public IActionResult Index()
         {
+            GetCartCount();
             List<Product> pList = _DbContext.Products.ToList();
             Random RNG = new Random();
             var selec = pList.OrderBy(x => RNG.Next()).Take(3).ToList();
@@ -46,6 +64,12 @@ namespace ProyectoProgramWebTecnoReparo.Controllers
             ViewBag.SplashText = splash;
             return View(selec);
         }
+
+        public IActionResult Common()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {

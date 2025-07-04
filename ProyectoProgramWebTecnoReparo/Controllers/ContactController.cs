@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProyectoProgramWebTecnoReparo.Helpers;
 using ProyectoProgramWebTecnoReparo.Models;
 using System.Diagnostics;
 
@@ -17,12 +18,32 @@ namespace ProyectoProgramWebTecnoReparo.Controllers
         [HttpPost]  
         public IActionResult Contact(Contact contact)
         {
+            GetCartCount();
             if (ModelState.IsValid)
             {
-                return View("Success");
+                TempData["ShowToast"] = true;
+                return RedirectToAction("Index", "Home");
             }
 
             return View(contact);
+        }
+
+        //Funciones secundarias
+
+        private void GetCartCount()
+        {
+            int q;
+
+            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "Cart");
+            if (cart == null)
+            {
+                q = 0;
+            }
+            else
+            {
+                q = cart.Count;
+            }
+            TempData["Count"] = q;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

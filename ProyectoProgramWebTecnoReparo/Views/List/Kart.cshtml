@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Item>
+@{
+    ViewData["Title"] = "Kart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container d-flex">
+    <div class="col-md-9">
+        <table class="table table-responsive table-hover">
+            <tr>
+                <th>Estado</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Photo</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Sub Total</th>
+            </tr>
+            @if (Model is not null)
+            {
+                @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="btn btn-primary" asp-action="Xtract" asp-controller="List" asp-route-id=@item.product.Id>Quitar</a>
+                            </td>
+                            <td>@item.product.Id</td>
+                            <td>@item.product.Name</td>
+                            <td><img src="/img/@item.product.Image" width="120" /></td>
+                            <td>@item.product.Price</td>
+                            <td>@item.quantity</td>
+                            <td>@(item.product.Price * item.quantity)</td>
+                        </tr>
+                    }
+                }
+        </table>
+    </div>
+</div>
+        <div class="col">
+            <div class="align-content-end">
+                <label class="form-label" style="font-size:28px">Total</label>
+                @if (Model is not null)
+                {
+                    <label class="form-label" style="font-size:28px">$ @Model.Sum(i => i.quantity * i.product.Price)</label>
+                }
+                else
+                {
+                    <label class="form-label">0</label>
+                }
+    
+            </div>
+        </div>   
+<br />
+<a class="btn btn-info" asp-action="List" asp-controller="List">Agregar mas elementos al carrito</a>
+

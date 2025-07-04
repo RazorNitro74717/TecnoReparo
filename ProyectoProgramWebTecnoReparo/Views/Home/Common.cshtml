@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Common";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Preguntas Frecuentes sobre el Armado de Computadoras</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    ¿Qué componentes necesito para armar una PC desde cero?
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Necesitás: gabinete, placa madre, procesador (CPU), memoria RAM, almacenamiento (SSD/HDD), fuente de poder, tarjeta gráfica (si no viene integrada), sistema de refrigeración y periféricos (monitor, teclado, mouse).
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                    ¿Cómo sé si los componentes son compatibles entre sí?
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Tenés que verificar el socket del procesador y la placa madre, el tipo de RAM soportada, la potencia requerida por la tarjeta gráfica y si la fuente de poder lo soporta. Herramientas como PCPartPicker pueden ayudarte a evitar incompatibilidades.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    ¿Necesito una tarjeta gráfica dedicada?
+                </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Solo si vas a usar aplicaciones demandantes como juegos, edición de video o modelado 3D. Para tareas básicas, muchos procesadores incluyen gráficos integrados suficientes.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                    ¿Qué es mejor: SSD o HDD?
+                </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Un SSD es mucho más rápido, silencioso y confiable que un HDD. Lo ideal es usar un SSD para el sistema operativo y programas, y un HDD para almacenamiento masivo si necesitás espacio adicional.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    ¿Cuánta memoria RAM necesito?
+                </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Para tareas básicas y navegación: 8 GB. Para gaming, edición o multitarea exigente: 16 GB o más. Asegurate de que la placa madre y sistema operativo soporten la cantidad instalada.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

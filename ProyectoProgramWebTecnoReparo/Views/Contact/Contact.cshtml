@@ -4,25 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
 <form asp-controller="Contact" asp-action="Contact" method="post">
     <div class="mb-3">
-        <label class="form-label">Nombre</label>
+        <label class="form-label" asp-for="Name">Nombre</label>
         <input id="name" name="Name" type="text" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label class="form-label">Telefono</label>
+        <label class="form-label" asp-for="Phone">Telefono</label>
         <input id="phnm" name="Phone" type="text" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label  class="form-label">Mail</label>
-        <input id="mail" name="Mail" type="email" class="form-control" />
+        <label  class="form-label" asp-for="Email">Mail</label>
+        <input id="mail" name="Email" type="email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label  class="form-label">Detalle</label>
+        <label class="form-label" asp-for="Message">Detalle</label>
         <textarea id="desc" name="Message" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
     </div>
     <div>
         <button type="submit" class="btn btn-success" onclick="SendToast()">Enviar</button>
@@ -30,29 +31,5 @@
     </div>
 </form>
 
-    <div class="position-fixed bottom-0 end-0 p-3">
-        <div id="OkToast" class="toast">
-            <div class="toast-header">
-                <strong class="me-auto">Solicitud de contacto enviada!</strong>
-                <small>Reciente</small>
-                <button class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-                Nos pondremos en contacto con usted en los proximos dias
 
-            </div>
-        </div>
-    </div>
-
-
-@section Scripts {
-    <script>
-        function SendToast() {
-            var context = document.getElementById('OkToast');
-            var toast = new bootstrap.Toast(context);
-            toast.show();
-        }
-
-    </script>
-}
 
