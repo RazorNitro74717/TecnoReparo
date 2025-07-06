@@ -67,6 +67,7 @@ namespace ProyectoProgramWebTecnoReparo.Controllers
 
         public IActionResult Common()
         {
+            GetCartCount();
             return View();
         }
 

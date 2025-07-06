@@ -1,21 +1,28 @@
 ﻿@model ProyectoProgramWebTecnoReparo.Models.VMs.ListCatVM
 
+
 @if (Model is not null)
 {
     <div class="row g-4 justify-content-center">
         @foreach (var pic in Model.Products)
         {
             <div class="col-12 col-md-4">
-                <div class="card" style="width: 15rem;">
+                <div class="card" style="width: 15rem; background-color: palevioletred;">
                     <img src="/img/@pic.Image" class="card-img-top" alt="/img/not_available.jpg">
                     <div class="card-body">
                         <h5 class="card-title">@pic.Name</h5>
                         <p class="card-text">@pic.Description</p>
-                        <p class="card-text">$ @pic.Price</p>
+                        <p class="card-text" style="font-weight: bold">$ @pic.Price</p>
                         <p class="card-text">@(pic._Category?.Name != null ?  pic._Category.Name : " ")</p>
                     </div>
-                    <a class="btn btn-info" asp-action="Cart" asp-controller="List" asp-route-id=@pic.Id>Agregar a carrito</a>
-
+                    @if (pic?.Available is false)
+                    {
+                        <a class="btn btn-secondary disabled" href="#">No disponible</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" asp-action="Cart" asp-controller="List" asp-route-id="@pic.Id">Agregar a carrito</a>
+                    }
                 </div>
             </div>
         }
